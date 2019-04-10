@@ -21,20 +21,16 @@ class App extends Component {
       })
   }
 
-  handleChanges = e => {
-    e.preventDefault();
-    this.setState({
-      [e.target.name]: e.target.value
-    })
-  }
+
 
   render() {
     return (
       <div className="App">
         <FriendsList
-          friends={this.state.friends}
-          handleChanges={this.handleChanges} />
+          friends={this.state.friends} />
       </div>
+
+
     );
   }
 }

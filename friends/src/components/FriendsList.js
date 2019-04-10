@@ -3,7 +3,6 @@ import Friend from './Friend';
 import FriendForm from './FriendForm';
 
 const FriendsList = props => {
-  console.log(props.friends)
   return (
     <div className='friends-list'>
 
@@ -17,7 +16,7 @@ const FriendsList = props => {
         ))}
       </div>
 
-      <FriendForm />
+      <FriendForm friends={props.friends} />
     </div>
   )
 }
