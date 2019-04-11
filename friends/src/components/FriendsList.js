@@ -16,7 +16,8 @@ const FriendsList = props => {
         ))}
       </div>
 
-      <FriendForm friends={props.friends} />
+      <FriendForm friends={props.friends}
+        addNewFriend={props.addNewFriend} />
     </div>
   )
 }

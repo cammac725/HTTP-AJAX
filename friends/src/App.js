@@ -21,16 +21,24 @@ class App extends Component {
       })
   }
 
-
+  addNewFriend = (e, newFriend) => {
+    e.preventDefault();
+    console.log(this.state.friends)
+    this.setState({
+      friends: [...this.state.friends, newFriend],
+      name: '',
+      age: '',
+      email: ''
+    })
+  }
 
   render() {
     return (
       <div className="App">
         <FriendsList
-          friends={this.state.friends} />
+          friends={this.state.friends}
+          addNewFriend={this.addNewFriend} />
       </div>
-
-
     );
   }
 }

@@ -4,26 +4,10 @@ class FriendForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      friends: this.props.friends,
       name: '',
       age: '',
       email: ''
     }
-  }
-
-  addNewFriend = e => {
-    e.preventDefault();
-    const newFriend = {
-      name: this.state.name,
-      age: this.state.age,
-      email: this.state.email
-    }
-    this.setState({
-      friends: [...this.state.friends, newFriend],
-      name: '',
-      age: '',
-      email: ''
-    })
   }
 
   handleChanges = e => {
@@ -58,8 +42,9 @@ class FriendForm extends React.Component {
           placeholder='Email address'
           onChange={this.handleChanges}>
         </input>
-        <button onClick={this.addNewFriend}>Add now</button>
-      </form>
+        <button onClick={(e) =>
+          this.props.addNewFriend(e, this.state)}>Add now</button>
+      </form >
     )
   }
 
