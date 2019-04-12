@@ -1,9 +1,9 @@
 import React from 'react';
 
 const Friend = props => {
-  const item = props.friends.find(
-    item => `${item.id}` === props.match.params.id
-  );
+
+
+  // console.log('friend', props.friend.id)
 
   return (
     <div>
@@ -11,8 +11,8 @@ const Friend = props => {
         <h2>{props.friend.name}</h2>
         <p>Age: {props.friend.age}</p>
         <p>{props.friend.email}</p>
-        <button onClick={() => props.deleteFriend(item.id)}>Remove friend</button>
-        <button onClick={() => props.setupUpdate(item)}>Update friend</button>
+        <button onClick={() => props.deleteFriend(props.friend.id)}>Remove friend</button>
+        <button onClick={() => props.setupUpdate(props.friend, props.history)}>Update friend</button>
 
       </div>
     </div>

@@ -1,12 +1,14 @@
 import React from 'react';
 
-class FriendForm extends React.Component {
-  state = {
-    name: '',
-    age: '',
-    email: ''
-  };
-
+class UpdateForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: '',
+      age: '',
+      email: ''
+    }
+  }
 
   handleChanges = e => {
     e.preventDefault();
@@ -17,22 +19,27 @@ class FriendForm extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-
-    this.props.addNewFriend({
-      ...this.state
-    })
-
+    let id;
+    let obj = this.props.friends.filter(obj => obj.name === this.state.name)[0];
+    if (obj === undefined) {
+      id = 0;
+    } else {
+      id = obj.id;
+    }
+    this.props.updateFriend(this.state, id)
+    alert("Friend has been updated")
     this.setState({
       name: '',
       age: '',
       email: ''
-    });
+    })
+
   }
 
   render() {
     return (
       <div className='form-wrapper'>
-        <h3>Add a friend and click submit!</h3>
+        <h3>Update a friend's info</h3>
         <form className='form' onSubmit={this.handleSubmit}>
           <input
             type='text'
@@ -55,12 +62,13 @@ class FriendForm extends React.Component {
             placeholder='Email address'
             onChange={this.handleChanges}
           />
-          <button type='submit' value='submit'>Add friend</button>
+          <button type='submit' value='submit'>Update friend</button>
         </form>
-      </div>
 
+      </div>
     )
   }
 }
 
-export default FriendForm;
+
+export default UpdateForm;
